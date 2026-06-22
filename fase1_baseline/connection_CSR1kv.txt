@@ -1,0 +1,46 @@
+[2026-06-22 22:45:47,865] +++ CSR1kv logfile ./connection_CSR1kv.txt +++
+[2026-06-22 22:45:47,866] +++ Unicon plugin iosxe +++
+Password: 
+[2026-06-22 22:45:48,016] +++ connection to spawn: ssh -l cisco -o KexAlgorithms=diffie-hellman-group14-sha1 192.168.56.113 22, id: 139712510911248 +++
+[2026-06-22 22:45:48,017] connection to CSR1kv
+
+
+*                                           *
+**                                         **
+***                                       ***
+***  Cisco Networking Academy             ***
+***   Emerging Technologies Workshop:     ***
+***    Model Driven Programmability       ***
+***                                       ***
+***  This software is provided for        ***
+***   Educational Purposes                ***
+***    Only in Networking Academies       ***
+***                                       ***
+**                                         **
+*                                           *
+
+
+% 22 is not an open connectionConnection to 192.168.56.113 closed by remote host.
+[2026-06-22 22:46:01,125] +++ CSR1kv logfile ./connection_CSR1kv.txt +++
+[2026-06-22 22:46:01,125] +++ Unicon plugin iosxe +++
+Password: 
+[2026-06-22 22:46:01,284] +++ connection to spawn: ssh -l cisco -o KexAlgorithms=diffie-hellman-group14-sha1 192.168.56.113 22, id: 140658676548368 +++
+[2026-06-22 22:46:01,285] connection to CSR1kv
+
+
+*                                           *
+**                                         **
+***                                       ***
+***  Cisco Networking Academy             ***
+***   Emerging Technologies Workshop:     ***
+***    Model Driven Programmability       ***
+***                                       ***
+***  This software is provided for        ***
+***   Educational Purposes                ***
+***    Only in Networking Academies       ***
+***                                       ***
+**                                         **
+*                                           *
+
+
+% 22 is not an open connectionConnection to 192.168.56.113 closed by remote host.

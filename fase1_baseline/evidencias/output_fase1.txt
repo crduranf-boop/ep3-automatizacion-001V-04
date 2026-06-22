@@ -1,0 +1,35 @@
+=== BASELINE SNAPSHOT ===
+Alumno : 001V-04 - Cristobal Alonso Duran Figueroa
+Fecha  : Mon 22 Jun 2026 11:01:41 PM UTC
+Host   : labvm
+=========================
+
+Learning '['interface', 'platform', 'routing']' on devices '['CSR1kv']'
+2026-06-22T23:01:43: %UNICON-WARNING: [33mDevice 'CSR1kv' connection 'cli' does not have IP and/or port specified, ignoring[0m[39m
+[33mDevice 'CSR1kv' connection 'cli' does not have IP and/or port specified, ignoring[0m[39m
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:02<00:04,  2.31s/it] 67%|██████▋   | 2/3 [00:18<00:06,  6.50s/it]100%|██████████| 3/3 [00:19<00:00,  4.78s/it]100%|██████████| 3/3 [00:19<00:00,  6.45s/it]+==============================================================================+
+| Genie Learn Summary for device CSR1kv                                        |
++==============================================================================+
+|  Connected to CSR1kv                                                         |
+|  -   Log: evidencias/baseline_001V-04/connection_CSR1kv.txt                  |
+|------------------------------------------------------------------------------|
+|  Learnt feature 'interface'                                                  |
+|  -  Ops structure:                                                           |
+| evidencias/baseline_001V-04/interface_iosxe_CSR1kv_ops.txt                   |
+|  -  Device Console:                                                          |
+| evidencias/baseline_001V-04/interface_iosxe_CSR1kv_console.txt               |
+|------------------------------------------------------------------------------|
+|  Learnt feature 'platform'                                                   |
+|  -  Ops structure:  evidencias/baseline_001V-04/platform_iosxe_CSR1kv_ops.txt |
+|  -  Device Console:                                                          |
+| evidencias/baseline_001V-04/platform_iosxe_CSR1kv_console.txt                |
+|------------------------------------------------------------------------------|
+|  Learnt feature 'routing'                                                    |
+|  -  Ops structure:  evidencias/baseline_001V-04/routing_iosxe_CSR1kv_ops.txt |
+|  -  Device Console:                                                          |
+| evidencias/baseline_001V-04/routing_iosxe_CSR1kv_console.txt                 |
+|==============================================================================|
+
+
+
+
