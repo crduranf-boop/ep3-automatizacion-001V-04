@@ -1,0 +1,18 @@
+# fase1_baseline/testbed_001V-04.yaml
+# Archivo de conexion pyATS/Genie. Se conecta por SSH (CLI), no NETCONF,
+# por eso funciona incluso antes de habilitar NETCONF en el router.
+# El dispositivo se llama CSR1kv (nombre generico, no el hostname real).
+
+devices:
+  CSR1kv:
+    os: iosxe
+    type: router
+    credentials:
+      default:
+        username: cisco
+        password: cisco123!
+    connections:
+      cli:
+        protocol: ssh -o KexAlgorithms=diffie-hellman-group14-sha1
+        ip: 192.168.56.101
+        port: 22

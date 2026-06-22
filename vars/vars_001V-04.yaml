@@ -1,0 +1,27 @@
+# vars/vars_001V-04.yaml
+# Datos asignados al alumno. Este archivo es importado por TODOS los
+# scripts y playbooks. Ningun valor debe estar hardcodeado en el codigo.
+
+alumno:
+  codigo: "001V-04"
+  nombre: "Cristobal Alonso Duran Figueroa"
+
+cliente:
+  empresa: "Tecnologias Verdes SpA"
+  hostname: "RTR-TECVERD"
+
+router:
+  # IP y credenciales de gestion del CSR1kv (red host-only de la DEVASC VM).
+  # Si tu CSR usa otra IP/credenciales, ajusta SOLO aqui.
+  ip: "192.168.56.101"
+  usuario: "cisco"
+  password: "cisco123!"
+  # Loopback de gestion: la interfaz es Loopback10 (igual para todo el curso),
+  # la IP es la asignada en tu ficha.
+  loopback_id: 10
+  loopback_ip: "10.1.4.1"
+  loopback_mask: "255.255.255.0"
+  loopback_prefix: "24"
+  descripcion_wan: "Enlace-WAN-La-Serena"
+  banner: "ACCESO RESTRINGIDO - TECVERD"
+  ntp_server: "208.67.222.222"

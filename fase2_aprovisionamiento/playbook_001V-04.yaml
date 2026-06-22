@@ -1,0 +1,94 @@
+---
+# fase2_aprovisionamiento/playbook_001V-04.yaml
+#
+# Aprovisionamiento corporativo del CSR1kv.
+# - Carga todos los datos desde vars/vars_001V-04.yaml (vars_files).
+#   NINGUN valor de la ficha esta escrito en este archivo (requisito E7a).
+# - Es idempotente: la 2a ejecucion debe mostrar TODAS las tareas en "ok".
+#
+# Orden de tareas (segun enunciado):
+#   1. Respaldo de la config actual (antes de cualquier cambio)
+#   2. Habilitar NETCONF
+#   3. Habilitar RESTCONF
+#   4. Habilitar HTTP seguro
+#   5. Hostname corporativo
+#   6. Banner de acceso
+#   7. Servidor NTP
+#   8. Descripcion interfaz WAN (GigabitEthernet1)
+#   9. Loopback de gestion
+
+- name: EP3 - Aprovisionamiento corporativo del CSR1kv
+  hosts: routers
+  gather_facts: false
+  connection: network_cli
+
+  vars_files:
+    - ../vars/vars_001V-04.yaml
+
+  tasks:
+    # ---------- BLOQUE 0: RESPALDO PREVIO ----------
+    - name: Asegurar carpeta de respaldo
+      ansible.builtin.file:
+        path: respaldo
+        state: directory
+        mode: "0755"
+      delegate_to: localhost
+
+    - name: Capturar configuracion actual (show running-config)
+      cisco.ios.ios_command:
+        commands:
+          - show running-config
+      register: backup_run
+
+    - name: Guardar respaldo (solo si no existe, para preservar estado inicial)
+      ansible.builtin.copy:
+        content: "{{ backup_run.stdout[0] }}"
+        dest: "respaldo/backup_{{ alumno.codigo }}.cfg"
+        force: false          # no sobrescribe: conserva el hostname INICIAL
+        mode: "0644"
+      delegate_to: localhost
+
+    # ---------- BLOQUE 1: SERVICIOS DE AUTOMATIZACION ----------
+    - name: Habilitar NETCONF (netconf-yang)
+      cisco.ios.ios_config:
+        lines:
+          - netconf-yang
+
+    - name: Habilitar RESTCONF (restconf)
+      cisco.ios.ios_config:
+        lines:
+          - restconf
+
+    - name: Habilitar servidor HTTP seguro
+      cisco.ios.ios_config:
+        lines:
+          - ip http secure-server
+
+    # ---------- BLOQUE 2: CONFIGURACION CORPORATIVA ----------
+    - name: Configurar hostname corporativo
+      cisco.ios.ios_config:
+        lines:
+          - "hostname {{ cliente.hostname }}"
+
+    - name: Configurar banner de acceso (motd)
+      cisco.ios.ios_banner:
+        banner: motd
+        text: "{{ router.banner }}"
+        state: present
+
+    - name: Configurar servidor NTP
+      cisco.ios.ios_config:
+        lines:
+          - "ntp server {{ router.ntp_server }}"
+
+    - name: Configurar descripcion de interfaz WAN
+      cisco.ios.ios_config:
+        parents: "interface GigabitEthernet1"
+        lines:
+          - "description {{ router.descripcion_wan }}"
+
+    - name: Crear/configurar interfaz Loopback de gestion
+      cisco.ios.ios_config:
+        parents: "interface Loopback{{ router.loopback_id }}"
+        lines:
+          - "ip address {{ router.loopback_ip }} {{ router.loopback_mask }}"
