@@ -1,0 +1,39 @@
+
+PLAY [EP3 - Aprovisionamiento corporativo del CSR1kv] *********************************************************
+
+TASK [Asegurar carpeta de respaldo] ***************************************************************************
+changed: [csr1kv -> localhost]
+
+TASK [Capturar configuracion actual (show running-config)] ****************************************************
+ok: [csr1kv]
+
+TASK [Guardar respaldo (solo si no existe, para preservar estado inicial)] ************************************
+changed: [csr1kv -> localhost]
+
+TASK [Habilitar NETCONF (netconf-yang)] ***********************************************************************
+ok: [csr1kv]
+
+TASK [Habilitar RESTCONF (restconf)] **************************************************************************
+ok: [csr1kv]
+
+TASK [Habilitar servidor HTTP seguro] *************************************************************************
+ok: [csr1kv]
+
+TASK [Configurar hostname corporativo] ************************************************************************
+changed: [csr1kv]
+
+TASK [Configurar banner de acceso (motd)] *********************************************************************
+changed: [csr1kv]
+
+TASK [Configurar servidor NTP] ********************************************************************************
+changed: [csr1kv]
+
+TASK [Configurar descripcion de interfaz WAN] *****************************************************************
+changed: [csr1kv]
+
+TASK [Crear/configurar interfaz Loopback de gestion] **********************************************************
+changed: [csr1kv]
+
+PLAY RECAP ****************************************************************************************************
+csr1kv                     : ok=11   changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
