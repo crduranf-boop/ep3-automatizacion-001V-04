@@ -1,0 +1,122 @@
+{
+  "GigabitEthernet1": {
+    "description": "Enlace-WAN-La-Serena",
+    "type": "CSR vNIC",
+    "oper_status": "up",
+    "phys_address": "0800.2750.ff9b",
+    "port_speed": "1000mbps",
+    "mtu": 1500,
+    "enabled": true,
+    "bandwidth": 1000000,
+    "flow_control": {
+      "receive": false,
+      "send": false
+    },
+    "mac_address": "0800.2750.ff9b",
+    "auto_negotiate": true,
+    "port_channel": {
+      "port_channel_member": false
+    },
+    "duplex_mode": "full",
+    "delay": 10,
+    "accounting": {
+      "other": {
+        "pkts_in": 473,
+        "chars_in": 19866,
+        "pkts_out": 166,
+        "chars_out": 9960
+      },
+      "ip": {
+        "pkts_in": 4891,
+        "chars_in": 572026,
+        "pkts_out": 3639,
+        "chars_out": 857212
+      },
+      "arp": {
+        "pkts_in": 473,
+        "chars_in": 19866,
+        "pkts_out": 166,
+        "chars_out": 9960
+      },
+      "ipv6": {
+        "pkts_in": 2037,
+        "chars_in": 225592,
+        "pkts_out": 0,
+        "chars_out": 0
+      }
+    },
+    "ipv4": {
+      "192.168.56.113/24": {
+        "ip": "192.168.56.113",
+        "prefix_length": "24",
+        "secondary": false
+      }
+    },
+    "counters": {
+      "in_pkts": 7291,
+      "in_octets": 790827,
+      "in_broadcast_pkts": 0,
+      "in_multicast_pkts": 0,
+      "in_errors": 0,
+      "in_mac_pause_frames": 0,
+      "out_mac_pause_frames": 0,
+      "in_crc_errors": 0,
+      "out_pkts": 3805,
+      "out_octets": 912832,
+      "out_errors": 0,
+      "last_clear": "never",
+      "rate": {
+        "load_interval": 300,
+        "in_rate": 0,
+        "in_rate_pkts": 0,
+        "out_rate": 0,
+        "out_rate_pkts": 0
+      }
+    },
+    "encapsulation": {
+      "encapsulation": "arpa"
+    },
+    "switchport_enable": false
+  },
+  "Loopback10": {
+    "type": "Loopback",
+    "oper_status": "up",
+    "mtu": 1514,
+    "enabled": true,
+    "bandwidth": 8000000,
+    "port_channel": {
+      "port_channel_member": false
+    },
+    "delay": 5000,
+    "ipv4": {
+      "10.1.4.1/24": {
+        "ip": "10.1.4.1",
+        "prefix_length": "24",
+        "secondary": false
+      }
+    },
+    "counters": {
+      "in_pkts": 0,
+      "in_octets": 0,
+      "in_broadcast_pkts": 0,
+      "in_multicast_pkts": 0,
+      "in_errors": 0,
+      "in_crc_errors": 0,
+      "out_pkts": 0,
+      "out_octets": 0,
+      "out_errors": 0,
+      "last_clear": "never",
+      "rate": {
+        "load_interval": 300,
+        "in_rate": 0,
+        "in_rate_pkts": 0,
+        "out_rate": 0,
+        "out_rate_pkts": 0
+      }
+    },
+    "encapsulation": {
+      "encapsulation": "loopback"
+    },
+    "switchport_enable": false
+  }
+}

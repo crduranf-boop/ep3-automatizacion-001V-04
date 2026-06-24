@@ -1,0 +1,33 @@
+================================================================
+       CERTIFICADO DE COMPLIANCE - IMPLEMENTACION DE RED
+================================================================
+
+Alumno          : Cristobal Alonso Duran Figueroa
+Codigo          : 001V-04
+Empresa cliente : Tecnologias Verdes SpA
+Equipo (host)   : RTR-TECVERD
+Generado en VM  : labvm
+Fecha/hora      : 2026-06-24 05:32:26
+
+----------------------------------------------------------------
+PARAMETROS APLICADOS
+----------------------------------------------------------------
+  Hostname          : RTR-TECVERD
+  Loopback gestion  : 10.1.4.1 255.255.255.0 (Loopback10)
+  Descripcion WAN   : Enlace-WAN-La-Serena
+  Banner            : ACCESO RESTRINGIDO - TECVERD
+  Servidor NTP      : 208.67.222.222
+
+----------------------------------------------------------------
+RESULTADOS DE VALIDACION
+----------------------------------------------------------------
+  Validacion NETCONF  : CONFORME
+  Validacion RESTCONF : CONFORME
+  Diff Genie c/cambios: SI
+
+================================================================
+  RESULTADO DE COMPLIANCE: CONFORME
+================================================================
+  El equipo cumple la configuracion corporativa y queda
+  LISTO PARA OPERAR. Ticket de implementacion cerrado.
+================================================================

@@ -1,0 +1,64 @@
+{
+  "vrf": {
+    "default": {
+      "address_family": {
+        "ipv4": {
+          "routes": {
+            "192.168.56.113/32": {
+              "route": "192.168.56.113/32",
+              "active": true,
+              "source_protocol": "local",
+              "source_protocol_codes": "L",
+              "next_hop": {
+                "outgoing_interface": {
+                  "GigabitEthernet1": {
+                    "outgoing_interface": "GigabitEthernet1"
+                  }
+                }
+              }
+            },
+            "192.168.56.0/24": {
+              "route": "192.168.56.0/24",
+              "active": true,
+              "source_protocol": "connected",
+              "source_protocol_codes": "C",
+              "next_hop": {
+                "outgoing_interface": {
+                  "GigabitEthernet1": {
+                    "outgoing_interface": "GigabitEthernet1"
+                  }
+                }
+              }
+            },
+            "10.1.4.1/32": {
+              "route": "10.1.4.1/32",
+              "active": true,
+              "source_protocol": "local",
+              "source_protocol_codes": "L",
+              "next_hop": {
+                "outgoing_interface": {
+                  "Loopback10": {
+                    "outgoing_interface": "Loopback10"
+                  }
+                }
+              }
+            },
+            "10.1.4.0/24": {
+              "route": "10.1.4.0/24",
+              "active": true,
+              "source_protocol": "connected",
+              "source_protocol_codes": "C",
+              "next_hop": {
+                "outgoing_interface": {
+                  "Loopback10": {
+                    "outgoing_interface": "Loopback10"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
