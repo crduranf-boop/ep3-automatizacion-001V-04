@@ -1,0 +1,23 @@
+============================================================
+VALIDACION NETCONF - EP3
+Script    : validacion_netconf.py
+Alumno    : Cristobal Alonso Duran Figueroa (001V-04)
+Fecha/hora: 2026-06-24 04:18:20
+Host VM   : labvm
+Router    : 192.168.56.113:830
+============================================================
+
+[i] XML crudo guardado en: /home/devasc/ep3-automatizacion-001V-04/fase3_validacion_netconf/evidencias/rpc_reply_raw.xml (9157 bytes)
+
+RESULTADO DE LA VALIDACION:
+------------------------------------------------------------
+[OK]   Hostname           esperado='RTR-TECVERD'  obtenido='RTR-TECVERD'
+[OK]   IP Loopback        esperado='10.1.4.1'  obtenido='10.1.4.1'
+[OK]   Mascara Loopback   esperado='255.255.255.0'  obtenido='255.255.255.0'
+[OK]   Descripcion WAN    esperado='Enlace-WAN-La-Serena'  obtenido='Enlace-WAN-La-Serena'
+[OK]   Servidor NTP       esperado='208.67.222.222'  obtenido='208.67.222.222'
+------------------------------------------------------------
+
+CRITERIOS CONFORMES: 5/5
+RESULTADO GLOBAL   : CONFORME
+============================================================

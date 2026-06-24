@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # fase3_validacion_netconf/validacion_netconf.py
-#
-# Valida (solo lectura) que la configuracion aplicada por Ansible quedo
-# correcta en el router, usando NETCONF (ncclient) como protocolo
-# independiente. Compara 5 criterios contra vars_001V-04.yaml.
-
 import os
 import socket
 import sys
@@ -14,9 +9,6 @@ import xml.etree.ElementTree as ET
 import yaml
 from ncclient import manager
 
-# ----------------------------------------------------------------------
-# Carga de variables (NADA hardcodeado)
-# ----------------------------------------------------------------------
 BASE = os.path.dirname(os.path.abspath(__file__))
 VARS_PATH = os.path.join(BASE, "..", "vars", "vars_001V-04.yaml")
 EVID = os.path.join(BASE, "evidencias")
@@ -29,12 +21,9 @@ R = V["router"]
 CLI = V["cliente"]
 AL = V["alumno"]
 
-# ----------------------------------------------------------------------
-# Metadatos
-# ----------------------------------------------------------------------
 print("=" * 60)
 print("VALIDACION NETCONF - EP3")
-print(f"Script    : validacion_netconf.py")
+print("Script    : validacion_netconf.py")
 print(f"Alumno    : {AL['nombre']} ({AL['codigo']})")
 print(f"Fecha/hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 print(f"Host VM   : {socket.gethostname()}")
@@ -43,7 +32,6 @@ print("=" * 60)
 
 
 def strip_ns(tree):
-    """Elimina los namespaces para poder buscar por tag simple."""
     for el in tree.iter():
         if isinstance(el.tag, str) and "}" in el.tag:
             el.tag = el.tag.split("}", 1)[1]
@@ -51,12 +39,6 @@ def strip_ns(tree):
 
 
 def main():
-    filtro = """
-    <filter>
-      <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native"/>
-    </filter>
-    """
-
     with manager.connect(
         host=R["ip"],
         port=830,
@@ -67,7 +49,7 @@ def main():
         look_for_keys=False,
         device_params={"name": "iosxe"},
     ) as m:
-        resp = m.get_config(source="running", filter=filtro)
+        resp = m.get_config(source="running")
 
     raw = resp.xml
     raw_path = os.path.join(EVID, "rpc_reply_raw.xml")
@@ -82,17 +64,14 @@ def main():
         return el.text.strip() if el is not None and el.text else None
 
     def subtree_has(tag, value):
-        """Busca un valor dentro del subarbol de <tag> (fallback robusto)."""
         for sub in root.iter(tag):
             for el in sub.iter():
                 if el.text and value in el.text:
                     return True
         return False
 
-    # ---- Extraccion de cada campo ----
     hostname = first_text(".//hostname")
 
-    # Loopback: buscar la interfaz Loopback con name == loopback_id
     loop_ip = loop_mask = None
     for loop in root.iter("Loopback"):
         name = loop.find("name")
@@ -102,7 +81,6 @@ def main():
             loop_ip = addr.text.strip() if addr is not None and addr.text else None
             loop_mask = mask.text.strip() if mask is not None and mask.text else None
 
-    # Descripcion WAN: interfaz GigabitEthernet name == 1
     wan_desc = None
     for gi in root.iter("GigabitEthernet"):
         name = gi.find("name")
@@ -110,20 +88,11 @@ def main():
             d = gi.find("description")
             wan_desc = d.text.strip() if d is not None and d.text else None
 
-    # ---- Comparacion (con fallback a busqueda en el subarbol) ----
     checks = []
-
-    checks.append(("Hostname", hostname, CLI["hostname"],
-                   hostname == CLI["hostname"]))
-
-    checks.append(("IP Loopback", loop_ip, R["loopback_ip"],
-                   loop_ip == R["loopback_ip"]))
-
-    checks.append(("Mascara Loopback", loop_mask, R["loopback_mask"],
-                   loop_mask == R["loopback_mask"]))
-
-    checks.append(("Descripcion WAN", wan_desc, R["descripcion_wan"],
-                   wan_desc == R["descripcion_wan"]))
+    checks.append(("Hostname", hostname, CLI["hostname"], hostname == CLI["hostname"]))
+    checks.append(("IP Loopback", loop_ip, R["loopback_ip"], loop_ip == R["loopback_ip"]))
+    checks.append(("Mascara Loopback", loop_mask, R["loopback_mask"], loop_mask == R["loopback_mask"]))
+    checks.append(("Descripcion WAN", wan_desc, R["descripcion_wan"], wan_desc == R["descripcion_wan"]))
 
     ntp_ok = subtree_has("ntp", R["ntp_server"])
     ntp_found = R["ntp_server"] if ntp_ok else "(no encontrado)"
@@ -144,7 +113,6 @@ def main():
     global_result = "CONFORME" if ok == total else "NO CONFORME"
     print(f"RESULTADO GLOBAL   : {global_result}")
     print("=" * 60)
-
     sys.exit(0 if ok == total else 1)
 
 
@@ -153,5 +121,4 @@ if __name__ == "__main__":
         main()
     except Exception as e:
         print(f"\n[ERROR] {type(e).__name__}: {e}")
-        print("Revisa: NETCONF habilitado (Fase 2), IP/credenciales, puerto 830.")
         sys.exit(2)
