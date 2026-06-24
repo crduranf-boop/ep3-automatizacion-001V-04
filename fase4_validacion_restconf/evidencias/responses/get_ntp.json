@@ -1,0 +1,11 @@
+{
+  "Cisco-IOS-XE-native:ntp": {
+    "Cisco-IOS-XE-ntp:server": {
+      "server-list": [
+        {
+          "ip-address": "208.67.222.222"
+        }
+      ]
+    }
+  }
+}

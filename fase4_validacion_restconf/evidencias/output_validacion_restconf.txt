@@ -1,0 +1,26 @@
+============================================================
+VALIDACION RESTCONF - EP3
+Script    : validacion_restconf.py
+Alumno    : Cristobal Alonso Duran Figueroa (001V-04)
+Fecha/hora: 2026-06-24 04:34:34
+Host VM   : labvm
+Router    : https://192.168.56.113/restconf/data
+============================================================
+[GET] Cisco-IOS-XE-native:native/hostname
+[GET] ietf-interfaces:interfaces/interface=Loopback10
+[GET] ietf-interfaces:interfaces/interface=GigabitEthernet1
+[GET] Cisco-IOS-XE-native:native/ntp
+
+[i] Respuestas JSON guardadas en: /home/devasc/ep3-automatizacion-001V-04/fase4_validacion_restconf/evidencias/responses
+
+RESULTADO DE LA VALIDACION:
+------------------------------------------------------------
+[OK]   Hostname           esperado='RTR-TECVERD'  obtenido='RTR-TECVERD'
+[OK]   IP Loopback        esperado='10.1.4.1'  obtenido='10.1.4.1'
+[OK]   Descripcion WAN    esperado='Enlace-WAN-La-Serena'  obtenido='Enlace-WAN-La-Serena'
+[OK]   Servidor NTP       esperado='208.67.222.222'  obtenido='208.67.222.222'
+------------------------------------------------------------
+
+CRITERIOS CONFORMES: 4/4
+RESULTADO GLOBAL   : CONFORME
+============================================================

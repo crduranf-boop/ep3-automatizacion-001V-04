@@ -1,0 +1,10 @@
+{
+  "ietf-interfaces:interface": {
+    "name": "GigabitEthernet1",
+    "description": "Enlace-WAN-La-Serena",
+    "type": "iana-if-type:ethernetCsmacd",
+    "enabled": true,
+    "ietf-ip:ipv4": {},
+    "ietf-ip:ipv6": {}
+  }
+}
